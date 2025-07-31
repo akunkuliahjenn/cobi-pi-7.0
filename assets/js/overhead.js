@@ -230,7 +230,7 @@ function deleteOverhead(id, name) {
             formData.append('type', 'delete_overhead');
             formData.append('overhead_id', id);
 
-            fetch('/cornerbites-sia/process/hapus_overhead.php', {
+            fetch('/process/hapus_overhead.php', {
                 method: 'POST',
                 body: formData
             })
@@ -262,7 +262,7 @@ function deleteLabor(id, name) {
             formData.append('type', 'delete_labor');
             formData.append('labor_id', id);
 
-            fetch('/cornerbites-sia/process/hapus_overhead.php', {
+            fetch('/process/hapus_overhead.php', {
                 method: 'POST',
                 body: formData
             })
@@ -301,7 +301,7 @@ function loadOverheadData(page = 1) {
         limit_overhead: overheadLimit
     });
 
-    fetch(`/cornerbites-sia/pages/overhead_management.php?${params}`)
+    fetch(`/pages/overhead_management.php?${params}`)
         .then(response => response.text())
         .then(data => {
             container.innerHTML = data;
@@ -329,7 +329,7 @@ function loadLaborData(page = 1) {
         limit_labor: laborLimit
     });
 
-    fetch(`/cornerbites-sia/pages/overhead_management.php?${params}`)
+    fetch(`/pages/overhead_management.php?${params}`)
         .then(response => response.text())
         .then(data => {
             container.innerHTML = data;

@@ -30,21 +30,21 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
         <?php if ($user_role == 'user'): ?>
             <!-- Menu untuk USER - Fokus HPP Full Costing -->
             <div class="space-y-1">
-                <a href="/cornerbites-sia/pages/dashboard.php" class="flex items-center py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'dashboard.php' && $current_dir == 'pages') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
+                <a href="/pages/dashboard.php" class="flex items-center py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'dashboard.php' && $current_dir == 'pages') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
                     <svg class="w-5 h-5 mr-3 text-gray-500 group-hover:text-gray-700 <?php echo ($current_page == 'dashboard.php' && $current_dir == 'pages') ? 'text-blue-600' : ''; ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                     </svg>
                     Dashboard
                 </a>
 
-                <a href="/cornerbites-sia/pages/produk.php" class="flex items-center py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'produk.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
+                <a href="/pages/produk.php" class="flex items-center py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'produk.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
                     <svg class="w-5 h-5 mr-3 text-gray-500 group-hover:text-gray-700 <?php echo ($current_page == 'produk.php') ? 'text-blue-600' : ''; ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                     </svg>
                     Manajemen Produk
                 </a>
 
-                <a href="/cornerbites-sia/pages/bahan_baku.php" class="flex items-start py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'bahan_baku.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
+                <a href="/pages/bahan_baku.php" class="flex items-start py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'bahan_baku.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
                     <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500 group-hover:text-gray-700 <?php echo ($current_page == 'bahan_baku.php') ? 'text-blue-600' : ''; ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                     </svg>
@@ -54,7 +54,7 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
                     </div>
                 </a>
 
-                <a href="/cornerbites-sia/pages/overhead_management.php" class="flex items-start py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'overhead_management.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
+                <a href="/pages/overhead_management.php" class="flex items-start py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'overhead_management.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
                     <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500 group-hover:text-gray-700 <?php echo ($current_page == 'overhead_management.php') ? 'text-blue-600' : ''; ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                     </svg>
@@ -64,7 +64,7 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
                     </div>
                 </a>
 
-                <a href="/cornerbites-sia/pages/resep_produk.php" class="flex items-start py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'resep_produk.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
+                <a href="/pages/resep_produk.php" class="flex items-start py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'resep_produk.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
                     <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500 group-hover:text-gray-700 <?php echo ($current_page == 'resep_produk.php') ? 'text-blue-600' : ''; ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                     </svg>
@@ -82,14 +82,14 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
         <?php elseif ($user_role == 'admin'): ?>
             <!-- Menu untuk ADMIN -->
             <div class="space-y-1">
-                <a href="/cornerbites-sia/admin/dashboard.php" class="flex items-center py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'dashboard.php' && $current_dir == 'admin') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
+                <a href="/admin/dashboard.php" class="flex items-center py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'dashboard.php' && $current_dir == 'admin') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
                     <svg class="w-5 h-5 mr-3 text-gray-500 group-hover:text-gray-700 <?php echo ($current_page == 'dashboard.php' && $current_dir == 'admin') ? 'text-blue-600' : ''; ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                     </svg>
                     Dashboard
                 </a>
 
-                <a href="/cornerbites-sia/admin/users.php" class="flex items-center py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'users.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
+                <a href="/admin/users.php" class="flex items-center py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200 group <?php echo ($current_page == 'users.php') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : ''; ?>">
                     <svg class="w-5 h-5 mr-3 text-gray-500 group-hover:text-gray-700 <?php echo ($current_page == 'users.php') ? 'text-blue-600' : ''; ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
                     </svg>
@@ -149,5 +149,5 @@ $current_dir = basename(dirname($_SERVER['PHP_SELF']));
         </div>
     </div>
 
-    <script src="/cornerbites-sia/assets/js/sidebar.js"></script>
+    <script src="/assets/js/sidebar.js"></script>
 </aside>

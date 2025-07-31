@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Kalkulator HPP - Sistem Kalkulasi Harga Pokok Produksi</title>
     <!-- Tailwind CSS Local Build -->
-    <link rel="stylesheet" href="/cornerbites-sia/assets/css/output.css">
+    <link rel="stylesheet" href="/assets/css/output.css">
     <!-- Custom CSS for theming (fallback jika diperlukan) -->
-    <link rel="stylesheet" href="/cornerbites-sia/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <title><?php echo $page_title ?? 'Aplikasi Kalkulator HPP'; ?></title>
 
     <!-- Font Inter dari Google Fonts -->
@@ -34,5 +34,5 @@
 </head>
 <body class="bg-gray-100 antialiased">
     <!-- Theme Management Script -->
-    <script src="/cornerbites-sia/assets/js/theme.js"></script>
+    <script src="/assets/js/theme.js"></script>
     <!-- Konten body akan dilanjutkan di file lain (sidebar, main content) -->

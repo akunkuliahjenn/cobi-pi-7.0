@@ -14,7 +14,7 @@ function enforcePasswordChange() {
         error_log("Change password: No valid session found, redirecting to login");
         session_destroy();
         $_SESSION['error_message'] = 'Sesi tidak valid. Silakan login kembali.';
-        header("Location: /cornerbites-sia/auth/login.php");
+        header("Location: /auth/login.php");
         exit();
     }
 
@@ -28,7 +28,7 @@ function enforcePasswordChange() {
         if (!$user) {
             session_destroy();
             $_SESSION['error_message'] = 'User tidak ditemukan. Silakan login ulang.';
-            header("Location: /cornerbites-sia/auth/login.php");
+            header("Location: /auth/login.php");
             exit();
         }
 
@@ -40,9 +40,9 @@ function enforcePasswordChange() {
             unset($_SESSION['password_change_token']);
 
             if ($user['role'] === 'admin') {
-                header("Location: /cornerbites-sia/admin/dashboard.php");
+                header("Location: /admin/dashboard.php");
             } else {
-                header("Location: /cornerbites-sia/pages/dashboard.php");
+                header("Location: /pages/dashboard.php");
             }
             exit();
         }
@@ -65,7 +65,7 @@ function enforcePasswordChange() {
         error_log("Password change enforcement error: " . $e->getMessage());
         session_destroy();
         $_SESSION['error_message'] = 'Terjadi kesalahan sistem. Silakan login ulang.';
-        header("Location: /cornerbites-sia/auth/login.php");
+        header("Location: /auth/login.php");
         exit();
     }
 }
@@ -137,11 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         // Redirect dengan JavaScript yang lebih kuat
                         echo "<script type='text/javascript'>";
                         echo "alert('Password berhasil diubah! Silakan login dengan password baru Anda.');";
-                        echo "window.location.href = '/cornerbites-sia/auth/login.php';";
+                        echo "window.location.href = '/auth/login.php';";
                         echo "</script>";
 
                         // Backup PHP header redirect
-                        header("Location: /cornerbites-sia/auth/login.php", true, 302);
+                        header("Location: /auth/login.php", true, 302);
                         exit();
 
                     } else {

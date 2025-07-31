@@ -65,12 +65,12 @@ function requireValidJWTToken() {
         if (isset($_COOKIE['auth_token'])) {
             setcookie('auth_token', '', [
                 'expires' => time() - 3600,
-                'path' => '/cornerbites-sia/',
+                'path' => '/',
                 'httponly' => true
             ]);
         }
         
-        header("Location: /cornerbites-sia/auth/login.php?session_expired=1");
+        header("Location: /auth/login.php?session_expired=1");
         exit();
     }
 }

@@ -3,7 +3,7 @@ require_once __DIR__ . '/../includes/auth_check.php';
 require_once __DIR__ . '/../config/db.php';
 
 if ($_SESSION['user_role'] !== 'admin') {
-    header("Location: /cornerbites-sia/pages/dashboard.php");
+    header("Location: /pages/dashboard.php");
     exit();
 }
 
@@ -14,14 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Prevent admin from resetting their own password
     if ($user_id == $_SESSION['user_id']) {
         $_SESSION['reset_message'] = ['text' => 'Anda tidak dapat mereset password sendiri.', 'type' => 'error'];
-        header("Location: /cornerbites-sia/admin/users.php");
+        header("Location: /admin/users.php");
         exit();
     }
 
     // Validate new password
     if (empty($new_password) || strlen($new_password) < 6) {
         $_SESSION['reset_message'] = ['text' => 'Password temporary minimal 6 karakter.', 'type' => 'error'];
-        header("Location: /cornerbites-sia/admin/users.php");
+        header("Location: /admin/users.php");
         exit();
     }
 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!$user_info) {
             $_SESSION['reset_message'] = ['text' => 'User tidak ditemukan.', 'type' => 'error'];
-            header("Location: /cornerbites-sia/admin/users.php");
+            header("Location: /admin/users.php");
             exit();
         }
 
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if (!$updated_user || !$verify_test) {
                 $_SESSION['reset_message'] = ['text' => 'Gagal memperbarui password. Verification test failed.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/admin/users.php");
+                header("Location: /admin/users.php");
                 exit();
             }
 
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['reset_message'] = ['text' => 'Error: ' . $e->getMessage(), 'type' => 'error'];
     }
 
-    header("Location: /cornerbites-sia/admin/users.php");
+    header("Location: /admin/users.php");
     exit();
 }
 ?>

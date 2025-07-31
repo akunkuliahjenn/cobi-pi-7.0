@@ -108,7 +108,7 @@ function loadUsersData() {
     });
     
     // Make AJAX request
-    fetch(`/cornerbites-sia/admin/users.php?${params.toString()}`)
+    fetch(`/admin/users.php?${params.toString()}`)
         .then(response => response.text())
         .then(data => {
             try {
@@ -285,7 +285,7 @@ function hideDeleteModal() {
 function confirmDeleteUser(userId) {
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = '/cornerbites-sia/process/hapus_user.php';
+    form.action = '/process/hapus_user.php';
 
     const input = document.createElement('input');
     input.type = 'hidden';

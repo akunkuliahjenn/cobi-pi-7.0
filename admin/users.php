@@ -232,7 +232,7 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
 
 // Pastikan hanya admin yang bisa mengakses
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
-    header("Location: /cornerbites-sia/pages/dashboard.php");
+    header("Location: /pages/dashboard.php");
     exit();
 }
 
@@ -591,7 +591,7 @@ if (isset($_SESSION['user_management_message'])) {
         <div class="bg-white rounded-xl shadow-2xl w-full max-w-md">
             <div class="p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4" id="modalTitle">Tambah Pengguna</h3>
-                <form id="userForm" action="/cornerbites-sia/process/kelola_user.php" method="POST">
+                <form id="userForm" action="/process/kelola_user.php" method="POST">
                     <input type="hidden" name="user_id" id="user_id_to_edit" value="">
                     <div class="space-y-4">
                         <div>
@@ -639,7 +639,7 @@ if (isset($_SESSION['user_management_message'])) {
 
 
 
-<script src="/cornerbites-sia/assets/js/admin.js"></script>
-<script src="/cornerbites-sia/assets/js/users.js"></script>
+<script src="/assets/js/admin.js"></script>
+<script src="/assets/js/users.js"></script>
 
 <?php include_once __DIR__ . '/../includes/footer.php'; ?>

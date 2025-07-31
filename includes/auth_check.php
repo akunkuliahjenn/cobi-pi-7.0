@@ -13,7 +13,7 @@ require_once __DIR__ . '/../config/db.php'; // Atau pastikan sudah di-include di
 // Cek apakah user_id ada di session (sudah login)
 if (!isset($_SESSION['user_id'])) {
     // Jika belum login, arahkan ke halaman login
-    header("Location: /cornerbites-sia/auth/login.php");
+    header("Location: /auth/login.php");
     exit(); // Penting untuk menghentikan eksekusi skrip setelah redirect
 }
 
@@ -22,10 +22,10 @@ $user_role = $_SESSION['user_role'] ?? 'guest';
 
 // Tentukan halaman yang memerlukan role 'admin'
 $admin_pages = [
-    '/cornerbites-sia/admin/dashboard.php',
-    '/cornerbites-sia/admin/users.php',
-    '/cornerbites-sia/admin/semua_transaksi.php',
-    '/cornerbites-sia/admin/statistik.php',
+    '/admin/dashboard.php',
+    '/admin/users.php',
+    '/admin/semua_transaksi.php',
+    '/admin/statistik.php',
 ];
 
 // Ambil path script yang sedang diakses
@@ -35,7 +35,7 @@ $current_page = $_SERVER['PHP_SELF'];
 if (in_array($current_page, $admin_pages)) {
     // Jika halaman admin diakses oleh non-admin, redirect ke dashboard user
     if ($user_role !== 'admin') {
-        header("Location: /cornerbites-sia/pages/dashboard.php");
+        header("Location: /pages/dashboard.php");
         exit();
     }
 } else {
@@ -43,7 +43,7 @@ if (in_array($current_page, $admin_pages)) {
     // dan admin mencoba mengakses dashboard user, arahkan ke dashboard admin.
     // Ini opsional, tergantung UX yang diinginkan.
     // if ($user_role === 'admin' && strpos($current_page, '/pages/') !== false) {
-    //     header("Location: /cornerbites-sia/admin/dashboard.php");
+    //     header("Location: /admin/dashboard.php");
     //     exit();
     // }
 }

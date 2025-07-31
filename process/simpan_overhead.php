@@ -30,7 +30,7 @@ try {
             // Validasi dasar
             if (empty($name) || $amount <= 0 || $estimated_uses <= 0) {
                 $_SESSION['overhead_message'] = ['text' => 'Nama, jumlah biaya, dan estimasi pemakaian harus diisi dengan benar.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/overhead_management.php");
+                header("Location: /pages/overhead_management.php");
                 exit();
             }
 
@@ -45,14 +45,14 @@ try {
             $duplicateCount = countWithUserId($conn, 'overhead_costs', $whereClauseDuplicate, $paramsDuplicate);
             if ($duplicateCount > 0) {
                 $_SESSION['overhead_message'] = ['text' => 'Overhead "' . $name . '" dengan estimasi pemakaian ' . $estimated_uses . 'x sudah ada. Gunakan estimasi pemakaian yang berbeda.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/overhead_management.php");
+                header("Location: /pages/overhead_management.php");
                 exit();
             }
 
             // Validasi khusus berdasarkan metode alokasi
             if ($allocation_method === 'percentage' && $amount > 100) {
                 $_SESSION['overhead_message'] = ['text' => 'Untuk metode persentase, nilai tidak boleh lebih dari 100%.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/overhead_management.php");
+                header("Location: /pages/overhead_management.php");
                 exit();
             }
 
@@ -111,7 +111,7 @@ try {
             // Validasi dasar
             if (empty($position_name) || $hourly_rate <= 0) {
                 $_SESSION['overhead_message'] = ['text' => 'Nama posisi dan upah per jam harus diisi dengan benar.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/overhead_management.php");
+                header("Location: /pages/overhead_management.php");
                 exit();
             }
 
@@ -126,7 +126,7 @@ try {
             $duplicateCount = countWithUserId($conn, 'labor_costs', $whereClauseDuplicate, $paramsDuplicate);
             if ($duplicateCount > 0) {
                 $_SESSION['overhead_message'] = ['text' => 'Posisi "' . $position_name . '" sudah ada. Gunakan nama posisi yang berbeda.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/overhead_management.php");
+                header("Location: /pages/overhead_management.php");
                 exit();
             }
 
@@ -164,19 +164,19 @@ try {
             }
         }
 
-        header("Location: /cornerbites-sia/pages/overhead_management.php");
+        header("Location: /pages/overhead_management.php");
         exit();
 
     } else {
         // Jika diakses langsung tanpa POST yang valid, redirect
-        header("Location: /cornerbites-sia/pages/overhead_management.php");
+        header("Location: /pages/overhead_management.php");
         exit();
     }
 
 } catch (PDOException $e) {
     error_log("Error simpan overhead/labor: " . $e->getMessage());
     $_SESSION['overhead_message'] = ['text' => 'Terjadi kesalahan sistem: ' . $e->getMessage(), 'type' => 'error'];
-    header("Location: /cornerbites-sia/pages/overhead_management.php");
+    header("Location: /pages/overhead_management.php");
     exit();
 }
 ?>

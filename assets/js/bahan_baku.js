@@ -355,7 +355,7 @@ function performAjaxSearch(type, searchTerm, limit) {
     params.set('ajax', '1');
 
     // Perform AJAX request
-    fetch(`/cornerbites-sia/pages/bahan_baku.php?${params.toString()}`)
+    fetch(`/pages/bahan_baku.php?${params.toString()}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);

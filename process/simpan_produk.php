@@ -28,7 +28,7 @@ try {
         // Validasi dasar
         if (empty($name) || empty($unit)) {
             $_SESSION['product_message'] = ['text' => 'Nama produk dan satuan harus diisi.', 'type' => 'error'];
-            header("Location: /cornerbites-sia/pages/produk.php");
+            header("Location: /pages/produk.php");
             exit();
         }
 
@@ -37,7 +37,7 @@ try {
             $duplicateCount = countWithUserId($conn, 'products', 'name = :name AND unit = :unit AND id != :id', [':name' => $name, ':unit' => $unit, ':id' => $product_id]);
             if ($duplicateCount > 0) {
                 $_SESSION['product_message'] = ['text' => "Produk lain dengan nama '$name' dan satuan '$unit' sudah ada. Silakan gunakan kombinasi nama dan satuan yang berbeda.", 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/produk.php");
+                header("Location: /pages/produk.php");
                 exit();
             }
 
@@ -56,7 +56,7 @@ try {
             $duplicateCount = countWithUserId($conn, 'products', 'name = :name AND unit = :unit', [':name' => $name, ':unit' => $unit]);
             if ($duplicateCount > 0) {
                 $_SESSION['product_message'] = ['text' => "Produk dengan nama '$name' dan satuan '$unit' sudah ada. Silakan gunakan kombinasi nama dan satuan yang berbeda.", 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/produk.php");
+                header("Location: /pages/produk.php");
                 exit();
             }
 
@@ -75,7 +75,7 @@ try {
             }
         }
 
-        header("Location: /cornerbites-sia/pages/produk.php");
+        header("Location: /pages/produk.php");
         exit();
 
     } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['action']) && $_GET['action'] == 'check_recipes') {
@@ -119,7 +119,7 @@ try {
 
         if (empty($product_id)) {
             $_SESSION['product_message'] = ['text' => 'ID produk tidak ditemukan untuk dihapus.', 'type' => 'error'];
-            header("Location: /cornerbites-sia/pages/produk.php");
+            header("Location: /pages/produk.php");
             exit();
         }
 
@@ -139,14 +139,14 @@ try {
             } else {
                 $_SESSION['product_message'] = ['text' => 'Gagal menghapus produk.', 'type' => 'error'];
             }
-            header("Location: /cornerbites-sia/pages/produk.php");
+            header("Location: /pages/produk.php");
             exit();
         } else {
             // Cek apakah produk terkait dengan resep (milik user ini)
             $recipeCount = countWithUserId($conn, 'product_recipes', 'product_id = :product_id', [':product_id' => $product_id]);
             if ($recipeCount > 0) {
                 $_SESSION['product_message'] = ['text' => 'Tidak bisa menghapus produk karena sudah memiliki resep. Hapus resep terkait terlebih dahulu.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/produk.php");
+                header("Location: /pages/produk.php");
                 exit();
             }
         }
@@ -158,12 +158,12 @@ try {
         } else {
             $_SESSION['product_message'] = ['text' => 'Gagal menghapus produk.', 'type' => 'error'];
         }
-        header("Location: /cornerbites-sia/pages/produk.php");
+        header("Location: /pages/produk.php");
         exit();
 
     } else {
         // Jika diakses langsung tanpa POST/GET yang valid, redirect
-        header("Location: /cornerbites-sia/pages/produk.php");
+        header("Location: /pages/produk.php");
         exit();
     }
 
@@ -182,7 +182,7 @@ try {
         $_SESSION['product_message'] = ['text' => 'Terjadi kesalahan sistem. Silakan coba lagi.', 'type' => 'error'];
     }
     
-    header("Location: /cornerbites-sia/pages/produk.php");
+    header("Location: /pages/produk.php");
     exit();
 }
 ?>

@@ -13,7 +13,7 @@ secureSessionStart();
 // Jika pengguna sudah login, alihkan ke dashboard yang sesuai.
 if (isset($_SESSION['user_id'])) {
     $role = $_SESSION['user_role'] ?? 'user';
-    $dashboard_path = ($role === 'admin') ? '/cornerbites-sia/admin/dashboard.php' : '/cornerbites-sia/pages/dashboard.php';
+    $dashboard_path = ($role === 'admin') ? '/admin/dashboard.php' : '/pages/dashboard.php';
     header("Location: " . $dashboard_path);
     exit();
 }
@@ -33,7 +33,7 @@ unset($_SESSION['success_message_register']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Corner Bites App</title>
+    <title>Login - Kalkulator HPP </title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Inter dari Google Fonts -->
@@ -82,7 +82,7 @@ unset($_SESSION['success_message_register']);
         <?php endif; ?>
 
         <!-- Form Login -->
-        <form action="/cornerbites-sia/process/login_process.php" method="POST" class="space-y-6">
+        <form action="/process/login_process.php" method="POST" class="space-y-6">
             <!-- CSRF Token -->
             <?php 
                 require_once __DIR__ . '/../config/auth_config.php';
@@ -118,7 +118,7 @@ unset($_SESSION['success_message_register']);
 
             <!-- Link Lupa Password -->
             <div class="text-right mb-4">
-                <a href="/cornerbites-sia/auth/forgot_password.php" class="text-white/80 hover:text-white text-sm hover:underline">
+                <a href="/auth/forgot_password.php" class="text-white/80 hover:text-white text-sm hover:underline">
                     Lupa Password?
                 </a>
             </div>
@@ -135,7 +135,7 @@ unset($_SESSION['success_message_register']);
         <div class="text-center mt-8 pt-6 border-t border-white/20">
             <p class="text-white/70 text-sm">
                 Belum punya akun? 
-                <a href="/cornerbites-sia/auth/register.php" class="text-white font-semibold hover:underline ml-1">Daftar sekarang</a>
+                <a href="/auth/register.php" class="text-white font-semibold hover:underline ml-1">Daftar sekarang</a>
             </p>
         </div>
     </div>

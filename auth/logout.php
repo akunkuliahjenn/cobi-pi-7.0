@@ -30,7 +30,7 @@ if (ini_get("session.use_cookies")) {
 // Metode 1: Hapus dengan path yang sama seperti saat set
 setcookie('auth_token', '', [
     'expires' => time() - 3600,
-    'path' => '/cornerbites-sia/',
+    'path' => '/',
     'httponly' => true,
     'samesite' => 'Lax'
 ]);
@@ -50,6 +50,6 @@ setcookie('auth_token', '', time() - 3600);
 session_destroy();
 
 // Redirect ke halaman login setelah logout
-header("Location: /cornerbites-sia/auth/login.php");
+header("Location: /auth/login.php");
 exit(); // Penting untuk menghentikan eksekusi skrip
 ?>

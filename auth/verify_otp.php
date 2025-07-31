@@ -9,14 +9,14 @@ secureSessionStart();
 // Jika sudah login, redirect ke dashboard
 if (isset($_SESSION['user_id'])) {
     $role = $_SESSION['user_role'] ?? 'user';
-    $dashboard_path = ($role === 'admin') ? '/cornerbites-sia/admin/dashboard.php' : '/cornerbites-sia/pages/dashboard.php';
+    $dashboard_path = ($role === 'admin') ? '/admin/dashboard.php' : '/pages/dashboard.php';
     header("Location: " . $dashboard_path);
     exit();
 }
 
 // Pastikan ada email dari halaman sebelumnya
 if (!isset($_SESSION['otp_email'])) {
-    header("Location: /cornerbites-sia/auth/forgot_password.php");
+    header("Location: /auth/forgot_password.php");
     exit();
 }
 
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['otp_code'])) {
             // Clear OTP session
             unset($_SESSION['otp_email'], $_SESSION['otp_user_id']);
             
-            header("Location: /cornerbites-sia/auth/reset_password_new.php");
+            header("Location: /auth/reset_password_new.php");
             exit();
         } else {
             $message = $result['message'];
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['otp_code'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verifikasi OTP - Corner Bites SIA</title>
+    <title>Verifikasi OTP - Kalkulator HPP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['otp_code'])) {
         </div>
 
         <div class="text-center mt-6 pt-6 border-t border-white/20">
-            <a href="/cornerbites-sia/auth/forgot_password.php" class="text-white/70 text-sm hover:text-white">
+            <a href="/auth/forgot_password.php" class="text-white/70 text-sm hover:text-white">
                 ← Kembali ke input email
             </a>
         </div>

@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Confirm logout
     if (confirmLogout) {
         confirmLogout.addEventListener('click', function() {
-            window.location.href = '/cornerbites-sia/auth/logout.php';
+            window.location.href = '/auth/logout.php';
         });
     }
 

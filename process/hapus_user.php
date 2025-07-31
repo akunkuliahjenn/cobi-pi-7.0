@@ -9,7 +9,7 @@ require_once __DIR__ . '/../config/db.php'; // Sertakan file koneksi database
 // Pastikan hanya admin yang bisa mengakses
 if ($_SESSION['user_role'] !== 'admin') {
     $_SESSION['user_management_message'] = ['text' => 'Anda tidak memiliki izin untuk melakukan tindakan ini.', 'type' => 'error'];
-    header("Location: /cornerbites-sia/pages/dashboard.php");
+    header("Location: /pages/dashboard.php");
     exit();
 }
 
@@ -20,14 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
     // Validasi ID
     if (empty($user_id_to_delete) || $user_id_to_delete <= 0) {
         $_SESSION['user_management_message'] = ['text' => 'ID pengguna tidak valid.', 'type' => 'error'];
-        header("Location: /cornerbites-sia/admin/users.php");
+        header("Location: /admin/users.php");
         exit();
     }
 
     // Cek agar admin tidak menghapus akunnya sendiri
     if ($user_id_to_delete === (int)$_SESSION['user_id']) {
         $_SESSION['user_management_message'] = ['text' => 'Anda tidak bisa menghapus akun Anda sendiri!', 'type' => 'error'];
-        header("Location: /cornerbites-sia/admin/users.php");
+        header("Location: /admin/users.php");
         exit();
     }
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
 
         if (!$userToDelete) {
             $_SESSION['user_management_message'] = ['text' => 'Pengguna yang akan dihapus tidak ditemukan.', 'type' => 'error'];
-            header("Location: /cornerbites-sia/admin/users.php");
+            header("Location: /admin/users.php");
             exit();
         }
 
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
         $_SESSION['user_management_message'] = ['text' => 'Terjadi kesalahan sistem saat menghapus pengguna: ' . $e->getMessage(), 'type' => 'error'];
     }
 
-    header("Location: /cornerbites-sia/admin/users.php");
+    header("Location: /admin/users.php");
     exit();
 
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
@@ -101,14 +101,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
     // Validasi ID
     if (empty($user_id_to_delete) || $user_id_to_delete <= 0) {
         $_SESSION['user_management_message'] = ['text' => 'ID pengguna tidak valid.', 'type' => 'error'];
-        header("Location: /cornerbites-sia/admin/users.php");
+        header("Location: /admin/users.php");
         exit();
     }
 
     // Cek agar admin tidak menghapus akunnya sendiri
     if ($user_id_to_delete === (int)$_SESSION['user_id']) {
         $_SESSION['user_management_message'] = ['text' => 'Anda tidak bisa menghapus akun Anda sendiri!', 'type' => 'error'];
-        header("Location: /cornerbites-sia/admin/users.php");
+        header("Location: /admin/users.php");
         exit();
     }
 
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
 
         if (!$userToDelete) {
             $_SESSION['user_management_message'] = ['text' => 'Pengguna yang akan dihapus tidak ditemukan.', 'type' => 'error'];
-            header("Location: /cornerbites-sia/admin/users.php");
+            header("Location: /admin/users.php");
             exit();
         }
 
@@ -172,13 +172,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
         $_SESSION['user_management_message'] = ['text' => 'Terjadi kesalahan sistem saat menghapus pengguna.', 'type' => 'error'];
     }
 
-    header("Location: /cornerbites-sia/admin/users.php");
+    header("Location: /admin/users.php");
     exit();
 
 } else {
     // Jika diakses tanpa ID atau metode tidak valid
     $_SESSION['user_management_message'] = ['text' => 'Permintaan tidak valid untuk menghapus pengguna.', 'type' => 'error'];
-    header("Location: /cornerbites-sia/admin/users.php");
+    header("Location: /admin/users.php");
     exit();
 }
 ?>

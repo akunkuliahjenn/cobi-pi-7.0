@@ -10,7 +10,7 @@ if (session_status() == PHP_SESSION_NONE) {
 // Jika pengguna sudah login, alihkan ke dashboard yang sesuai.
 if (isset($_SESSION['user_id'])) {
     $role = $_SESSION['user_role'] ?? 'user';
-    $dashboard_path = ($role === 'admin') ? '/cornerbites-sia/admin/dashboard.php' : '/cornerbites-sia/pages/dashboard.php';
+    $dashboard_path = ($role === 'admin') ? '/admin/dashboard.php' : '/pages/dashboard.php';
     header("Location: " . $dashboard_path);
     exit();
 }
@@ -26,7 +26,7 @@ unset($_SESSION['error_message_register'], $_SESSION['success_message_register']
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi - Corner Bites App</title>
+    <title>Registrasi - Kalkulator HPP</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Inter dari Google Fonts -->
@@ -73,7 +73,7 @@ unset($_SESSION['error_message_register'], $_SESSION['success_message_register']
         <?php endif; ?>
 
         <!-- Form Registrasi -->
-        <form action="/cornerbites-sia/process/register_process.php" method="POST" class="space-y-6">
+        <form action="/process/register_process.php" method="POST" class="space-y-6">
             <!-- Username -->
             <div>
                 <label for="username" class="block text-sm font-medium text-white/90 mb-2">Username</label>
@@ -140,7 +140,7 @@ unset($_SESSION['error_message_register'], $_SESSION['success_message_register']
         <div class="text-center mt-8 pt-6 border-t border-white/20">
             <p class="text-white/70 text-sm">
                 Sudah punya akun? 
-                <a href="/cornerbites-sia/auth/login.php" class="text-white font-semibold hover:underline ml-1">Masuk di sini</a>
+                <a href="/auth/login.php" class="text-white font-semibold hover:underline ml-1">Masuk di sini</a>
             </p>
         </div>
     </div>

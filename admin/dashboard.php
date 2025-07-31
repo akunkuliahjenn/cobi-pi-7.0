@@ -7,7 +7,7 @@ require_once __DIR__ . '/../config/db.php';
 
 // Pastikan hanya admin yang bisa mengakses
 if ($_SESSION['user_role'] !== 'admin') {
-    header("Location: /cornerbites-sia/pages/dashboard.php");
+    header("Location: /pages/dashboard.php");
     exit();
 }
 
@@ -255,6 +255,6 @@ if (isset($_SESSION['admin_message'])) {
 </div>
 
 
-<script src="/cornerbites-sia/assets/js/admin.js"></script>
+<script src="/assets/js/admin.js"></script>
 
 <?php include_once __DIR__ . '/../includes/footer.php'; ?>

@@ -8,7 +8,7 @@ require_once __DIR__ . '/../config/db.php'; // Sertakan file koneksi database
 // Pastikan hanya admin yang bisa mengakses halaman ini
 if ($_SESSION['user_role'] !== 'admin') {
     $_SESSION['user_management_message'] = ['text' => 'Anda tidak memiliki izin untuk melakukan tindakan ini.', 'type' => 'error'];
-    header("Location: /cornerbites-sia/pages/dashboard.php");
+    header("Location: /pages/dashboard.php");
     exit();
 }
 
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validasi dasar
     if (empty($username) || !in_array($role, ['user', 'admin'])) {
         $_SESSION['user_management_message'] = ['text' => 'Username atau role tidak valid.', 'type' => 'error'];
-        header("Location: /cornerbites-sia/admin/users.php");
+        header("Location: /admin/users.php");
         exit();
     }
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmtCheckUsername->execute([$username, $user_id]);
             if ($stmtCheckUsername->fetch()) {
                 $_SESSION['user_management_message'] = ['text' => 'Username sudah digunakan oleh pengguna lain.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/admin/users.php");
+                header("Location: /admin/users.php");
                 exit();
             }
 
@@ -68,12 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // --- Proses Tambah Pengguna Baru ---
             if (empty($password)) {
                 $_SESSION['user_management_message'] = ['text' => 'Password harus diisi untuk pengguna baru.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/admin/users.php");
+                header("Location: /admin/users.php");
                 exit();
             }
             if (strlen($password) < 6) {
                 $_SESSION['user_management_message'] = ['text' => 'Password minimal 6 karakter.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/admin/users.php");
+                header("Location: /admin/users.php");
                 exit();
             }
 
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmtCheckUsername->execute([$username]);
             if ($stmtCheckUsername->fetch()) {
                 $_SESSION['user_management_message'] = ['text' => 'Username sudah digunakan. Pilih username lain.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/admin/users.php");
+                header("Location: /admin/users.php");
                 exit();
             }
 
@@ -107,12 +107,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_management_message'] = ['text' => 'Terjadi kesalahan sistem: ' . $e->getMessage(), 'type' => 'error'];
     }
 
-    header("Location: /cornerbites-sia/admin/users.php");
+    header("Location: /admin/users.php");
     exit();
 
 } else {
     // Jika diakses langsung tanpa POST request, redirect
-    header("Location: /cornerbites-sia/admin/users.php");
+    header("Location: /admin/users.php");
     exit();
 }
 ?>

@@ -11,14 +11,14 @@ require_once __DIR__ . '/config/db.php';
 // Periksa apakah user sudah login
 if (!empty($_SESSION['user_id']) && !empty($_SESSION['user_role'])) {
     if ($_SESSION['user_role'] === 'admin') {
-        header("Location: /cornerbites-sia/admin/dashboard.php");
+        header("Location: /admin/dashboard.php");
     } else {
-        header("Location: /cornerbites-sia/pages/dashboard.php");
+        header("Location: /pages/dashboard.php");
     }
     exit();
 } else {
     // Jika belum login, arahkan ke halaman login
-    header("Location: /cornerbites-sia/auth/login.php");
+    header("Location: /auth/login.php");
     exit();
 }
 ?>

@@ -96,7 +96,7 @@ try {
         // Validasi dasar
         if (empty($name) || empty($unit) || $purchase_size <= 0 || $purchase_price_per_unit <= 0) {
             $_SESSION['bahan_baku_message'] = ['text' => 'Nama, satuan, ukuran beli, dan harga beli per unit (harus > 0) tidak boleh kosong.', 'type' => 'error'];
-            header("Location: /cornerbites-sia/pages/bahan_baku.php");
+            header("Location: /pages/bahan_baku.php");
             exit();
         }
 
@@ -107,7 +107,7 @@ try {
             if ($duplicateCount > 0) {
                 $itemType = ($type === 'kemasan') ? 'Kemasan' : 'Bahan baku';
                 $_SESSION['bahan_baku_message'] = ['text' => $itemType . ' dengan nama "' . $name . '", merek "' . $brand . '", dan satuan "' . $unit . '" sudah ada. Silakan gunakan kombinasi yang berbeda.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/bahan_baku.php");
+                header("Location: /pages/bahan_baku.php");
                 exit();
             }
 
@@ -138,7 +138,7 @@ try {
                 } else {
                     $_SESSION['bahan_baku_message'] = ['text' => 'Terjadi kesalahan saat memperbarui data. Silakan coba lagi atau hubungi administrator jika masalah berlanjut.', 'type' => 'error'];
                 }
-                header("Location: /cornerbites-sia/pages/bahan_baku.php");
+                header("Location: /pages/bahan_baku.php");
                 exit();
             }
         } else {
@@ -148,7 +148,7 @@ try {
             if ($duplicateCount > 0) {
                 $itemType = ($type === 'kemasan') ? 'Kemasan' : 'Bahan baku';
                 $_SESSION['bahan_baku_message'] = ['text' => $itemType . ' dengan nama "' . $name . '", merek "' . $brand . '", dan satuan "' . $unit . '" sudah ada. Silakan gunakan kombinasi yang berbeda.', 'type' => 'error'];
-                header("Location: /cornerbites-sia/pages/bahan_baku.php");
+                header("Location: /pages/bahan_baku.php");
                 exit();
             }
 
@@ -178,7 +178,7 @@ try {
                 } else {
                     $_SESSION['bahan_baku_message'] = ['text' => 'Terjadi kesalahan saat menyimpan data. Silakan coba lagi atau hubungi administrator jika masalah berlanjut.', 'type' => 'error'];
                 }
-                header("Location: /cornerbites-sia/pages/bahan_baku.php");
+                header("Location: /pages/bahan_baku.php");
                 exit();
             }
         }
@@ -243,7 +243,7 @@ try {
 
         if (empty($bahan_baku_id)) {
             $_SESSION['bahan_baku_message'] = ['text' => 'ID bahan baku tidak ditemukan untuk dihapus.', 'type' => 'error'];
-            header("Location: /cornerbites-sia/pages/bahan_baku.php");
+            header("Location: /pages/bahan_baku.php");
             exit();
         }
 
@@ -273,19 +273,19 @@ try {
             $_SESSION['bahan_baku_message'] = ['text' => 'Terjadi kesalahan saat menghapus bahan baku/kemasan.', 'type' => 'error'];
         }
         
-        header("Location: /cornerbites-sia/pages/bahan_baku.php");
+        header("Location: /pages/bahan_baku.php");
         exit();
 
     } else {
         // Jika diakses langsung tanpa POST/GET yang valid, redirect
-        header("Location: /cornerbites-sia/pages/bahan_baku.php");
+        header("Location: /pages/bahan_baku.php");
         exit();
     }
 
 } catch (PDOException $e) {
     error_log("Error simpan/hapus bahan baku: " . $e->getMessage());
     $_SESSION['bahan_baku_message'] = ['text' => 'Terjadi kesalahan sistem: ' . $e->getMessage(), 'type' => 'error'];
-    header("Location: /cornerbites-sia/pages/bahan_baku.php");
+    header("Location: /pages/bahan_baku.php");
     exit();
 }
 ?>

@@ -488,7 +488,7 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == 'labor') {
                             </details>
                         </div>
 
-                        <form action="/cornerbites-sia/process/simpan_overhead.php" method="POST">
+                        <form action="/process/simpan_overhead.php" method="POST">
                             <input type="hidden" name="type" value="overhead">
                             <input type="hidden" name="overhead_id" id="overhead_id_to_edit">
 
@@ -593,7 +593,7 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == 'labor') {
                             </details>
                         </div>
 
-                        <form action="/cornerbites-sia/process/simpan_overhead.php" method="POST">
+                        <form action="/process/simpan_overhead.php" method="POST">
                             <input type="hidden" name="type" value="labor">
                             <input type="hidden" name="labor_id" id="labor_id_to_edit">
 
@@ -820,7 +820,7 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == 'labor') {
     </div>
 </div>
 
-<script src="/cornerbites-sia/assets/js/overhead.js"></script>
+<script src="/assets/js/overhead.js"></script>
 <script>
 function showTab(tabName) {
     const tabOverhead = document.getElementById('tab-overhead');

@@ -20,25 +20,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validasi input
     if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
         $_SESSION['error_message_register'] = 'Semua field harus diisi.';
-        header("Location: /cornerbites-sia/auth/register.php");
+        header("Location: /auth/register.php");
         exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error_message_register'] = 'Format email tidak valid.';
-        header("Location: /cornerbites-sia/auth/register.php");
+        header("Location: /auth/register.php");
         exit();
     }
 
     if ($password !== $confirm_password) {
         $_SESSION['error_message_register'] = 'Konfirmasi password tidak cocok.';
-        header("Location: /cornerbites-sia/auth/register.php");
+        header("Location: /auth/register.php");
         exit();
     }
 
     if (strlen($password) < 6) {
         $_SESSION['error_message_register'] = 'Password minimal 6 karakter.';
-        header("Location: /cornerbites-sia/auth/register.php");
+        header("Location: /auth/register.php");
         exit();
     }
 
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute([$username]);
         if ($stmt->fetch()) {
             $_SESSION['error_message_register'] = 'Username sudah digunakan. Pilih username lain.';
-            header("Location: /cornerbites-sia/auth/register.php");
+            header("Location: /auth/register.php");
             exit();
         }
 
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute([$email]);
         if ($stmt->fetch()) {
             $_SESSION['error_message_register'] = 'Email sudah digunakan. Gunakan email lain.';
-            header("Location: /cornerbites-sia/auth/register.php");
+            header("Location: /auth/register.php");
             exit();
         }
 
@@ -75,23 +75,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Registrasi berhasil
             $_SESSION['success_message_register'] = 'Registrasi berhasil! Silakan login dengan akun Anda.';
-            header("Location: /cornerbites-sia/auth/login.php");
+            header("Location: /auth/login.php");
             exit();
         } else {
             $_SESSION['error_message_register'] = 'Gagal mendaftar user. Silakan coba lagi.';
-            header("Location: /cornerbites-sia/auth/register.php");
+            header("Location: /auth/register.php");
             exit();
         }
 
     } catch (PDOException $e) {
         error_log("Register Error: " . $e->getMessage());
         $_SESSION['error_message_register'] = 'Terjadi kesalahan sistem saat mendaftar. Silakan coba lagi nanti.';
-        header("Location: /cornerbites-sia/auth/register.php");
+        header("Location: /auth/register.php");
         exit();
     }
 } else {
     // Jika diakses langsung tanpa POST request, redirect ke register
-    header("Location: /cornerbites-sia/auth/register.php");
+    header("Location: /auth/register.php");
     exit();
 }
 ?>

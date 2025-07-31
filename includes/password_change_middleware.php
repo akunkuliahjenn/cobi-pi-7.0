@@ -53,12 +53,12 @@ function enforcePasswordChangeMiddleware() {
 
             // Simple redirect without interference
             if (!headers_sent()) {
-                header("Location: /cornerbites-sia/auth/change_password.php");
+                header("Location: /auth/change_password.php");
                 exit();
             }
 
             // JavaScript redirect sebagai backup jika headers sudah sent
-            echo "<script>window.location.href='/cornerbites-sia/auth/change_password.php';</script>";
+            echo "<script>window.location.href='/auth/change_password.php';</script>";
             exit();
         }
 
@@ -74,7 +74,7 @@ function enforcePasswordChangeMiddleware() {
         // Log error dan redirect ke login jika ada masalah database
         error_log("Password change middleware error: " . $e->getMessage());
         $_SESSION['error_message'] = 'Terjadi kesalahan sistem. Silakan login ulang.';
-        header("Location: /cornerbites-sia/auth/login.php");
+        header("Location: /auth/login.php");
         exit();
     }
 }

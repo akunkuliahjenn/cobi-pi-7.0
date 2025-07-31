@@ -83,33 +83,33 @@ function enforceRoleBasedAccess() {
     
     // Define strict page access rules
     $admin_only_pages = [
-        '/cornerbites-sia/admin/dashboard.php',
-        '/cornerbites-sia/admin/users.php',
-        '/cornerbites-sia/admin/semua_transaksi.php',
-        '/cornerbites-sia/admin/statistik.php',
-        '/cornerbites-sia/admin/reset_password.php',
-        '/cornerbites-sia/admin/debug_users_admin.php'
+        '/admin/dashboard.php',
+        '/admin/users.php',
+        '/admin/semua_transaksi.php',
+        '/admin/statistik.php',
+        '/admin/reset_password.php',
+        '/admin/debug_users_admin.php'
     ];
     
     $user_only_pages = [
-        '/cornerbites-sia/pages/dashboard.php',
-        '/cornerbites-sia/pages/bahan_baku.php',
-        '/cornerbites-sia/pages/produk.php',
-        '/cornerbites-sia/pages/resep_produk.php',
-        '/cornerbites-sia/pages/overhead_management.php'
+        '/pages/dashboard.php',
+        '/pages/bahan_baku.php',
+        '/pages/produk.php',
+        '/pages/resep_produk.php',
+        '/pages/overhead_management.php'
     ];
     
     // Check admin trying to access user pages
     if ($user_role === 'admin' && in_array($current_page, $user_only_pages)) {
         $_SESSION['error_message'] = 'Akses ditolak. Admin tidak dapat mengakses halaman user. Gunakan dashboard admin.';
-        header("Location: /cornerbites-sia/admin/dashboard.php");
+        header("Location: /admin/dashboard.php");
         exit();
     }
     
     // Check user trying to access admin pages
     if ($user_role === 'user' && in_array($current_page, $admin_only_pages)) {
         $_SESSION['error_message'] = 'Akses ditolak. Anda tidak memiliki izin admin.';
-        header("Location: /cornerbites-sia/pages/dashboard.php");
+        header("Location: /pages/dashboard.php");
         exit();
     }
     
@@ -119,14 +119,14 @@ function enforceRoleBasedAccess() {
     // Block admin from accessing user URLs
     if ($user_role === 'admin' && strpos($request_uri, '/pages/') !== false) {
         $_SESSION['error_message'] = 'Akses ditolak. URL tidak valid untuk role admin.';
-        header("Location: /cornerbites-sia/admin/dashboard.php");
+        header("Location: /admin/dashboard.php");
         exit();
     }
     
     // Block user from accessing admin URLs
     if ($user_role === 'user' && strpos($request_uri, '/admin/') !== false) {
         $_SESSION['error_message'] = 'Akses ditolak. URL tidak valid untuk role user.';
-        header("Location: /cornerbites-sia/pages/dashboard.php");
+        header("Location: /pages/dashboard.php");
         exit();
     }
 }
@@ -140,7 +140,7 @@ if (!verifyAuthentication()) {
     secureSessionStart();
     
     $_SESSION['error_message'] = 'Sesi login Anda telah berakhir. Silakan login kembali.';
-    header("Location: /cornerbites-sia/auth/login.php");
+    header("Location: /auth/login.php");
     exit();
 }
 

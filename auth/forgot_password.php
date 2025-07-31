@@ -9,7 +9,7 @@ secureSessionStart();
 // Jika sudah login, redirect ke dashboard
 if (isset($_SESSION['user_id'])) {
     $role = $_SESSION['user_role'] ?? 'user';
-    $dashboard_path = ($role === 'admin') ? '/cornerbites-sia/admin/dashboard.php' : '/cornerbites-sia/pages/dashboard.php';
+    $dashboard_path = ($role === 'admin') ? '/admin/dashboard.php' : '/pages/dashboard.php';
     header("Location: " . $dashboard_path);
     exit();
 }
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Set session untuk lanjut ke OTP
             $_SESSION['otp_email'] = $email;
             $_SESSION['otp_user_id'] = $result['user_id'];
-            header("Location: /cornerbites-sia/auth/verify_otp.php");
+            header("Location: /auth/verify_otp.php");
             exit();
         } else {
             $message = $result['message'];
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lupa Password - Corner Bites SIA</title>
+    <title>Lupa Password - Kalkulator HPP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="text-center mt-6 pt-6 border-t border-white/20">
             <p class="text-white/70 text-sm">
                 Ingat password? 
-                <a href="/cornerbites-sia/auth/login.php" class="text-white font-semibold hover:underline ml-1">Kembali ke Login</a>
+                <a href="/auth/login.php" class="text-white font-semibold hover:underline ml-1">Kembali ke Login</a>
             </p>
         </div>
     </div>

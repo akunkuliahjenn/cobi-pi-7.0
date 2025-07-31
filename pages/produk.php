@@ -210,7 +210,7 @@ if (isset($_SESSION['product_message'])) {
                 </div>
             </div>
 
-            <form action="/cornerbites-sia/process/simpan_produk.php" method="POST">
+            <form action="/process/simpan_produk.php" method="POST">
                 <input type="hidden" name="product_id" id="product_id_to_edit" value="">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
@@ -509,7 +509,7 @@ if (isset($_SESSION['product_message'])) {
 // JavaScript functions for the delete modal
 function showDeleteModal(productId, productName) {
     // First check if product has recipes
-    fetch(`/cornerbites-sia/process/simpan_produk.php?action=check_recipes&id=${productId}`)
+    fetch(`/process/simpan_produk.php?action=check_recipes&id=${productId}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -525,7 +525,7 @@ function showDeleteModal(productId, productName) {
                 document.getElementById('deleteModal').classList.remove('hidden');
                 document.getElementById('modal-title').textContent = 'Hapus Produk';
                 document.getElementById('delete-message').textContent = `Apakah Anda yakin ingin menghapus produk "${productName}"?`;
-                document.getElementById('deleteConfirmButton').href = '/cornerbites-sia/process/simpan_produk.php?action=delete&id=' + productId;
+                document.getElementById('deleteConfirmButton').href = '/process/simpan_produk.php?action=delete&id=' + productId;
             }
         })
         .catch(error => {
@@ -548,7 +548,7 @@ function showForceDeleteModal(productId, productName, data) {
         recipeDetails.appendChild(div);
     });
 
-    document.getElementById('forceDeleteConfirmButton').href = '/cornerbites-sia/process/simpan_produk.php?action=delete&force=1&id=' + productId;
+    document.getElementById('forceDeleteConfirmButton').href = '/process/simpan_produk.php?action=delete&force=1&id=' + productId;
     document.getElementById('forceDeleteModal').classList.remove('hidden');
 }
 

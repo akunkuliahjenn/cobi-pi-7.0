@@ -84,7 +84,7 @@ function editProduct(product) {
     }
 
     // Scroll ke form dan focus pada field pertama
-    const form = document.querySelector('form[action="/cornerbites-sia/process/simpan_produk.php"]');
+    const form = document.querySelector('form[action="/process/simpan_produk.php"]');
     if (form) {
         form.scrollIntoView({ behavior: 'smooth' });
         setTimeout(() => {
@@ -144,7 +144,7 @@ function resetForm() {
     }
 
     // Scroll ke form dan focus pada field pertama
-    const form = document.querySelector('form[action="/cornerbites-sia/process/simpan_produk.php"]');
+    const form = document.querySelector('form[action="/process/simpan_produk.php"]');
     if (form) {
         form.scrollIntoView({ behavior: 'smooth' });
         setTimeout(() => {
@@ -186,7 +186,7 @@ function validateForm() {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Add form validation
-    const form = document.querySelector('form[action="/cornerbites-sia/process/simpan_produk.php"]');
+    const form = document.querySelector('form[action="/process/simpan_produk.php"]');
     if (form) {
         form.addEventListener('submit', function(e) {
             if (!validateForm()) {
@@ -216,7 +216,7 @@ function closeDeleteModal() {
 
 function confirmDelete() {
     if (productIdToDelete) {
-        window.location.href = `/cornerbites-sia/process/simpan_produk.php?action=delete&id=${productIdToDelete}`;
+        window.location.href = `/process/simpan_produk.php?action=delete&id=${productIdToDelete}`;
     }
 }
 

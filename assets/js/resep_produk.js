@@ -851,7 +851,7 @@ function deleteRecipe(recipeId, materialName) {
     if (confirm(`Apakah Anda yakin ingin menghapus ${materialName} dari resep?`)) {
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = '/cornerbites-sia/process/simpan_resep_produk.php';
+        form.action = '/process/simpan_resep_produk.php';
 
         const actionInput = document.createElement('input');
         actionInput.type = 'hidden';

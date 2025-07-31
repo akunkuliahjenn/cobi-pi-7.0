@@ -7,7 +7,7 @@ require_once __DIR__ . '/../includes/activity_logger.php';
 secureSessionStart();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: /cornerbites-sia/auth/login.php");
+    header("Location: /auth/login.php");
     exit();
 }
 
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $csrf_token = $_POST['csrf_token'] ?? '';
 if (!verifyCSRFToken($csrf_token)) {
     $_SESSION['login_error'] = 'Token keamanan tidak valid. Silakan coba lagi.';
-    header("Location: /cornerbites-sia/auth/login.php");
+    header("Location: /auth/login.php");
     exit();
 }
 
@@ -25,7 +25,7 @@ $password = $_POST['password'] ?? '';
 // Basic validation
 if (empty($username) || empty($password)) {
     $_SESSION['login_error'] = 'Username dan password tidak boleh kosong.';
-    header("Location: /cornerbites-sia/auth/login.php");
+    header("Location: /auth/login.php");
     exit();
 }
 
@@ -33,7 +33,7 @@ if (empty($username) || empty($password)) {
 $client_identifier = $_SERVER['REMOTE_ADDR'] . '_' . $username;
 if (!checkLoginAttempts($client_identifier)) {
     $_SESSION['login_error'] = 'Terlalu banyak percobaan login. Silakan coba lagi dalam 5 menit.';
-    header("Location: /cornerbites-sia/auth/login.php");
+    header("Location: /auth/login.php");
     exit();
 }
 
@@ -49,7 +49,7 @@ try {
         logActivity(null, $username, 'LOGIN_FAILED', "Failed login attempt - username not found: $username");
 
         $_SESSION['login_error'] = 'Username tidak ditemukan.';
-        header("Location: /cornerbites-sia/auth/login.php");
+        header("Location: /auth/login.php");
         exit();
     }
     
@@ -59,7 +59,7 @@ try {
         logActivity(null, $username, 'LOGIN_FAILED', "Failed login attempt - wrong password for username: $username");
 
         $_SESSION['login_error'] = 'Password salah.';
-        header("Location: /cornerbites-sia/auth/login.php");
+        header("Location: /auth/login.php");
         exit();
     }
 
@@ -79,7 +79,7 @@ try {
     // HANYA SIMPAN JWT TOKEN KE COOKIES - BUKAN DATA TERPISAH
     setcookie('auth_token', $jwt_token, [
         'expires' => time() + JWT_EXPIRY_TIME,
-        'path' => '/cornerbites-sia/',
+        'path' => '/',
         'domain' => '',
         'secure' => false, // Set true jika menggunakan HTTPS
         'httponly' => true, // Mencegah akses via JavaScript
@@ -94,22 +94,22 @@ try {
         $_SESSION['must_change_password'] = true;
         $_SESSION['force_password_change'] = true;
         $_SESSION['password_change_token'] = bin2hex(random_bytes(32));
-        header("Location: /cornerbites-sia/auth/change_password.php");
+        header("Location: /auth/change_password.php");
         exit();
     }
 
     // Redirect based on role
     if ($user['role'] === 'admin') {
-        header("Location: /cornerbites-sia/admin/dashboard.php");
+        header("Location: /admin/dashboard.php");
     } else {
-        header("Location: /cornerbites-sia/pages/dashboard.php");
+        header("Location: /pages/dashboard.php");
     }
     exit();
 
 } catch (Exception $e) {
     error_log("Login error: " . $e->getMessage());
     $_SESSION['login_error'] = 'Terjadi kesalahan sistem. Silakan coba lagi.';
-    header("Location: /cornerbites-sia/auth/login.php");
+    header("Location: /auth/login.php");
     exit();
 }
 ?>
